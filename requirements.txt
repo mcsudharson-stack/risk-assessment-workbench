@@ -1,3 +1,10 @@
 fastapi
 uvicorn[standard]
 pydantic-settings
+pytest
+httpx
+sqlalchemy
+groq
+streamlit
+requests
+plotly
