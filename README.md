@@ -1,49 +1,141 @@
 # Risk Assessment Workbench
 
-AI-assisted financial crime risk assessment platform for assessing
-financial crime risk introduced by new products, features, process
-changes, vendors, geographies, and customer segments.
+AI-assisted Financial Crime Risk Management (FCRM) workbench for assessing risks introduced by new products, features, processes, vendors, geographies, and customer segments.
 
 ## Problem
 
-The current risk assessment process relies heavily on email,
-documents, spreadsheets, and manual analysis.
+Financial institutions must assess financial-crime risk before significant business changes go live.
 
-This project aims to provide a governed workflow that moves a
-change request from intake through assessment and committee
-decision while maintaining human oversight and auditability.
+Traditional assessments may depend on email, Word, Excel, and SharePoint, which can result in:
 
-## Goals
+- Long assessment cycles
+- Inconsistent analyst outcomes
+- Manual record keeping
+- Difficult audit reconstruction
 
-- Reduce assessment preparation time
-- Standardize risk assessment
-- Provide traceability for risk ratings
-- Retrieve relevant policies and guidance
-- Support analysts with AI-generated assessment drafts
-- Maintain human decision-making
-- Maintain an immutable audit trail
-- Support configurable scoring and workflow rules
+## Solution
 
-## Technology
+The Risk Assessment Workbench provides a governed workflow:
+
+Change Request
+→ Risk Scoring
+→ Policy Retrieval
+→ AI Draft Assessment
+→ FCRM Analyst Review
+→ Risk Committee Decision
+→ Audit History
+
+AI assists human reviewers but does not make final approval or rejection decisions.
+
+## Users
+
+### Product Owner
+
+Submits a new business change for assessment.
+
+### FCRM Analyst
+
+Reviews:
+
+- Risk score
+- Risk factors
+- Policy evidence
+- AI-generated assessment
+
+The analyst can override the AI assessment, but an override reason must be recorded.
+
+### Risk Committee
+
+Makes the final decision:
+
+- Approved
+- Rejected
+- Changes Requested
+
+## Key Features
+
+- Change request management
+- Deterministic risk scoring
+- Policy knowledge retrieval
+- Groq LLM integration
+- AI-generated FCRM assessment
+- Human-in-the-loop review
+- AI override tracking
+- Risk Committee decision workflow
+- Audit history
+- Streamlit dashboard
+- FastAPI REST APIs
+- Automated tests
+- Docker containerization
+- GitHub Actions CI
+
+## Technology Stack
+
+### Backend
 
 - Python
 - FastAPI
-- LangGraph
-- LangChain
-- PostgreSQL
-- pgvector
-- Streamlit
-- Docker
-- pytest
+- SQLAlchemy
+- SQLite
+- Pydantic
 
-## Project Structure
+### AI
+
+- Groq
+- LLM prompting
+- Local policy retrieval
+- AI-assisted risk assessment
+
+### Frontend
+
+- Streamlit
+- Plotly
+
+### Testing
+
+- Pytest
+
+### DevOps
+
+- Git
+- GitHub
+- GitHub Actions
+- Docker
+- Docker Compose
+
+## Architecture
 
 ```text
-src/          Application backend
-ai/           AI prompts, agents and guidance
-data/         Synthetic data and knowledge base
-docs/         Requirements, architecture and governance
-evals/        AI evaluation datasets and results
-tests/        Automated tests
-ops/          Deployment and operations
-frontend/     User interface
+Product Owner
+      |
+      v
+Streamlit UI
+      |
+      v
+FastAPI Backend
+      |
+      +-------------------+
+      |                   |
+      v                   v
+SQLite DB          Risk Assessment Workflow
+                          |
+                          v
+                 Deterministic Scoring
+                          |
+                          v
+                   Policy Retrieval
+                          |
+                          v
+                      Groq LLM
+                          |
+                          v
+                  AI Draft Assessment
+                          |
+                          v
+                   FCRM Analyst
+                          |
+                          v
+                   Risk Committee
+                          |
+                          v
+                   Final Decision
